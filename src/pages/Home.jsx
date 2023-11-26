@@ -3,22 +3,43 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import ProductCard from "../components/ProductCard";
 import Button from "@mui/material/Button";
-import useListProduct from "../api/listProduct";
+import axios from "axios";
+
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import useFetchData from "../api/createsession";
 import { addToCart } from "../slices/cartSlice";
-const productUrl =
-  "https://linkedin-cv-crawler.beta-limited.workers.dev/interview/products";
+import { toast } from "react-toastify";
+const sessionUrl =
+  "https://linkedin-cv-crawler.beta-limited.workers.dev/interview/createsession";
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items, status } = useSelector((state) => state.products);
-
-  const handleAddtoCart = (product) => {
+  const { data: sessionId } = useFetchData(sessionUrl);
+  const handleAddtoCart = async (product) => {
     dispatch(addToCart(product));
-    navigate("/cart");
+    try {
+      const response = await axios.post(
+        "https://linkedin-cv-crawler.beta-limited.workers.dev/interview/add-to-cart",
+        { id: product.id },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Session-ID": sessionId,
+          },
+        }
+      );
+      toast.success(`${response.data}`, {
+        position: "bottom-left",
+      });
+    } catch (error) {
+      toast.error(`Error adding item to cart:${error}`, {
+        position: "bottom-left",
+      });
+    }
   };
   return (
     <Box sx={{ bgcolor: "#f6f9fc", pt: 10 }}>
@@ -35,7 +56,11 @@ const Home = () => {
             >
               {items?.map((item) => (
                 <Grid xs={3} sm={4} md={4} key={item.index}>
-                  <ProductCard {...item} handleAddtoCart={handleAddtoCart} />
+                  <ProductCard
+                    {...item}
+                    handleAddtoCart={handleAddtoCart}
+                    sessionId={sessionId}
+                  />
                 </Grid>
               ))}
             </Grid>

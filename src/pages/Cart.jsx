@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart, decreaseCart } from "../slices/cartSlice";
+import {
+  addToCart,
+  removeFromCart,
+  decreaseCart,
+  clearCart,
+  getTotals,
+} from "../slices/cartSlice";
 import { Link } from "react-router-dom";
 import {
   Button,
@@ -17,10 +23,10 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  /* useEffect(() => {
+  useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
- */
+
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
@@ -34,7 +40,7 @@ const Cart = () => {
   };
 
   const handleClearCart = () => {
-    //dispatch(clearCart());
+    dispatch(clearCart());
   };
 
   return (

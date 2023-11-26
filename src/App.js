@@ -9,20 +9,34 @@ import NavBar from "./components/NavBar";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#b5565e",
+    },
+  },
+  typography: {
+    fontFamily: "Source Sans 3",
+  },
+});
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <NavBar />
-        <Routes>
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/not-found" element={<NotFound />} />
-          {/* not existing route redirect to not found */}
-          <Route path="*" element={<Navigate to="/not-found" />} />
-        </Routes>
-      </Router>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/not-found" element={<NotFound />} />
+            {/* not existing route redirect to not found */}
+            <Route path="*" element={<Navigate to="/not-found" />} />
+          </Routes>
+        </Router>
+      </div>
+    </ThemeProvider>
   );
 }
 

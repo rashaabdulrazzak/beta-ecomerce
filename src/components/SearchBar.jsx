@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-function SearchBar({ searchTerm, productSearchFunction }) {
-  // const [searchTerm, setSearchTerm] = useState("");
-
+import { useNavigate } from "react-router-dom";
+function SearchBar() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
   const handleSearch = () => {
-    productSearchFunction(searchTerm);
+    if (searchTerm) {
+      console.log(searchTerm);
+      navigate(`/search-result/${encodeURIComponent(searchTerm)}`);
+    } else {
+      alert("Please enter a search term");
+    }
+  };
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
   };
   return (
     <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
@@ -17,12 +28,8 @@ function SearchBar({ searchTerm, productSearchFunction }) {
         variant="outlined"
         value={searchTerm}
         placeholder="Searching for..."
-        onChange={(e) => productSearchFunction(e.target.value)}
-        onKeyPress={(e) => {
-          if (e.key === "Enter") {
-            handleSearch();
-          }
-        }}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">

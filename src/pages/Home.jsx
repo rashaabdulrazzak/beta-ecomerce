@@ -1,21 +1,19 @@
 import React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
-import ProductCard from "../components/ProductCard";
 import Button from "@mui/material/Button";
 import axios from "axios";
-
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import ProductCard from "../components/ProductCard";
 import useFetchData from "../api/createsession";
 import { addToCart } from "../slices/cartSlice";
-import { toast } from "react-toastify";
+
 const sessionUrl =
   "https://linkedin-cv-crawler.beta-limited.workers.dev/interview/createsession";
 
 const Home = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { items, status } = useSelector((state) => state.products);
   const { data: sessionId } = useFetchData(sessionUrl);

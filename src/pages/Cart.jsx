@@ -239,20 +239,6 @@ const Cart = () => {
                   }}
                 >{`$${cartItem.price * cartItem.cartQuantity}`}</Typography>
               </Box>
-
-              {/*   <Box>
-                <Button
-                  onClick={() => handleAddToCart(cartItem)}
-                  sx={{
-                    border: "none",
-                    outline: "none",
-                    background: "none",
-                    cursor: "pointer",
-                  }}
-                >
-                  remove
-                </Button>
-              </Box> */}
             </Card>
           ))}
 
@@ -291,12 +277,7 @@ const Cart = () => {
                   sx={{ fontWeight: 700 }}
                 >{`$${cart.cartTotalAmount}`}</span>
               </Box>
-              <Typography
-                variant="body1"
-                sx={{ fontSize: "14px", fontWeight: 200, my: "0.5rem" }}
-              >
-                Taxes and shipping calculated at checkout
-              </Typography>
+
               <Button
                 sx={{
                   width: "100%",

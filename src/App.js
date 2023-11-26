@@ -10,6 +10,8 @@ import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const theme = createTheme({
   palette: {
@@ -17,15 +19,13 @@ const theme = createTheme({
       main: "#b5565e",
     },
   },
-  typography: {
-    fontFamily: "Source Sans 3",
-  },
 });
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <Router>
+          <ToastContainer />
           <NavBar />
           <Routes>
             <Route path="/cart" element={<Cart />} />

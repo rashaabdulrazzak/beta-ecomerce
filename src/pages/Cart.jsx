@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../slices/cartSlice";
+import { addToCart, removeFromCart, decreaseCart } from "../slices/cartSlice";
 import { Link } from "react-router-dom";
 import {
   Button,
@@ -22,11 +22,11 @@ const Cart = () => {
   }, [cart, dispatch]);
  */
   const handleAddToCart = (product) => {
-    // dispatch(addToCart(product));
+    dispatch(addToCart(product));
   };
 
   const handleDecreaseCart = (product) => {
-    // dispatch(decreaseCart(product));
+    dispatch(decreaseCart(product));
   };
 
   const handleRemoveFromCart = (product) => {

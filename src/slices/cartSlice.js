@@ -10,7 +10,6 @@ const initialState = {
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-  // action later
   reducers: {
     addToCart(state, action) {
       // check if the product added previously
@@ -31,7 +30,24 @@ const cartSlice = createSlice({
       }
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+    removeFromCart(state, action) {
+      state.cartItems.map((cartItem) => {
+        if (cartItem.id === action.payload.id) {
+          const nextCartItems = state.cartItems.filter(
+            (item) => item.id !== cartItem.id
+          );
+
+          state.cartItems = nextCartItems;
+
+          toast.error(`${action.payload.name} removed from cart`, {
+            position: "bottom-left",
+          });
+        }
+        localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+        return state;
+      });
+    },
   },
 });
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

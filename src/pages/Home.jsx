@@ -6,7 +6,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/ProductCard/ProductCard";
 import useFetchData from "../api/createsession";
 import { addToCart } from "../slices/cartSlice";
 

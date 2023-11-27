@@ -116,13 +116,13 @@ const Cart = () => {
                 </Typography>
                 <Button
                   onClick={() => handleRemoveFromCart(cartItem)}
-                  sx={{ color: "gray", mt: "0.7rem" }}
+                  sx={{ color: "black", mt: "0.7rem", bgcolor: "gray" }}
                 >
                   Remove
                 </Button>
               </CardContent>
               <Box
-                style={{ display: "flex", alignItems: "center", width: "25%" }}
+                style={{ display: "flex", alignItems: "center", width: "20%" }}
               >
                 <Typography
                   variant="h5"

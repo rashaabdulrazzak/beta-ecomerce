@@ -2,7 +2,7 @@ import React from "react";
 import useListProduct from "../api/listProduct";
 import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/ProductCard/ProductCard";
 import { useParams } from "react-router-dom";
 
 const SearchResult = () => {

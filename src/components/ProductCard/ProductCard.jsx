@@ -8,22 +8,8 @@ import IndeterminateCheckBoxOutlinedIcon from "@mui/icons-material/Indeterminate
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-
 import CardActions from "@mui/material/CardActions";
-
-import MuiButton from "@mui/material/Button";
-import styled from "@mui/material/styles/styled";
-
-const StyledButton = styled(MuiButton)({
-  backgroundColor: "#b5565e",
-  color: "white",
-  fontWeight: "bold",
-  ":hover": {
-    backgroundColor: "#b5565e",
-    color: "white",
-  },
-  width: "100%",
-});
+import { CustomBox, StyledButton } from "./styles";
 
 const ProductCard = ({
   id,
@@ -54,25 +40,14 @@ const ProductCard = ({
   };
   return (
     <Card sx={{ maxWidth: 345, position: "relative" }}>
-      <Box
-        sx={{
-          position: "absolute",
-          top: 16,
-          left: 16,
-          bgcolor: "primary.main",
-          color: "white",
-          p: 1.5,
-          borderRadius: "50px",
-        }}
-      >
-        {discount}
-      </Box>
+      <CustomBox sx={{ position: "absolute" }}>{discount}</CustomBox>
       <CardMedia component="img" height="194" alt={name} src={image} />
       <CardContent
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          flexDirection: { xs: "column", md: "row" },
         }}
       >
         <Box>
@@ -111,6 +86,7 @@ const ProductCard = ({
               display: "flex",
               alignItems: "center",
               justifyContent: "space-around",
+              flexDirection: { xs: "column", md: "row" },
             }}
           >
             <Typography
@@ -131,9 +107,10 @@ const ProductCard = ({
         </Box>
         <Box
           sx={{
-            display: "block",
+            display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            flexDirection: { xs: "row", md: "column" },
             p: 2,
           }}
         >

@@ -24,15 +24,6 @@ const StyledButton = styled(MuiButton)({
   },
   width: "100%",
 });
-/* TODO pass required props
-TODO: check the width of discount icon
-and adjust it
-accordingly
-TODO MAKE SURE CARD IS RESPONSIVE
-TODO CHECK STYLE
-
-
- */
 
 const ProductCard = ({
   id,

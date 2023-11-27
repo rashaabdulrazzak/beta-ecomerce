@@ -16,13 +16,17 @@ const cartSlice = createSlice({
       const itemIndex = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
       );
+
       if (itemIndex >= 0) {
-        state.cartItems[itemIndex].cartQuantity += 1;
+        state.cartItems[itemIndex].cartQuantity += action.payload.quantity;
         toast.info(`Increased ${state.cartItems[itemIndex].name}  quantity`, {
           position: "bottom-left",
         });
       } else {
-        const tempProduct = { ...action.payload, cartQuantity: 1 };
+        const tempProduct = {
+          ...action.payload,
+          cartQuantity: action.payload.quantity,
+        };
         state.cartItems.push(tempProduct);
         toast.success(`${action.payload.name} added to card`, {
           position: "bottom-left",

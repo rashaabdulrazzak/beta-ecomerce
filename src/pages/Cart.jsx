@@ -8,6 +8,7 @@ import {
   getTotals,
 } from "../slices/cartSlice";
 import { Link } from "react-router-dom";
+import KeyboardBackspaceOutlinedIcon from "@mui/icons-material/KeyboardBackspaceOutlined";
 import {
   Button,
   Container,
@@ -46,11 +47,11 @@ const Cart = () => {
   return (
     <Container sx={{ padding: "2rem", maxWidth: "md" }}>
       <Typography
-        variant="h2"
+        variant="h4"
         align="center"
         sx={{ fontWeight: 400, mb: "2rem" }}
       >
-        Shopping Cart
+        Your Cart
       </Typography>
 
       {cart?.cartItems.length === 0 ? (
@@ -72,72 +73,13 @@ const Cart = () => {
                 alignItems: "center",
               }}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                className="bi bi-arrow-left"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-                />
-              </svg>
+              <KeyboardBackspaceOutlinedIcon fontSize="large" />
               <span style={{ marginLeft: "0.5rem" }}>Start Shopping</span>
             </Link>
           </Box>
         </Box>
       ) : (
         <Box>
-          <Grid container sx={{ mb: "2rem" }}>
-            <Grid item xs={2}>
-              <Typography
-                variant="h5"
-                sx={{ fontWeight: 400, textTransform: "uppercase" }}
-              >
-                Product
-              </Typography>
-            </Grid>
-            <Grid item xs={3}>
-              <Typography
-                variant="h5"
-                sx={{ fontWeight: 400, textTransform: "uppercase" }}
-              >
-                Product
-              </Typography>
-            </Grid>
-            <Grid item xs={2}>
-              <Typography
-                variant="h5"
-                sx={{ fontWeight: 400, textTransform: "uppercase" }}
-              >
-                Price
-              </Typography>
-            </Grid>
-            <Grid item xs={2}>
-              <Typography
-                variant="h5"
-                sx={{ fontWeight: 400, textTransform: "uppercase" }}
-              >
-                Quantity
-              </Typography>
-            </Grid>
-            <Grid item xs={3}>
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: 400,
-                  textTransform: "uppercase",
-                  textAlign: "right",
-                }}
-              >
-                Total
-              </Typography>
-            </Grid>
-          </Grid>
-
           {cart.cartItems.map((cartItem) => (
             <Card
               key={cartItem.id}
@@ -304,19 +246,10 @@ const Cart = () => {
                     alignItems: "center",
                   }}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    className="bi bi-arrow-left"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-                    />
-                  </svg>
+                  <KeyboardBackspaceOutlinedIcon
+                    fontSize="medium"
+                    sx={{ marginTop: "-5px" }}
+                  />
                   <span style={{ marginLeft: "0.5rem" }}>
                     Continue Shopping
                   </span>

@@ -146,12 +146,12 @@ const ProductCard = ({
             p: 2,
           }}
         >
-          {/* todo: may check font awesome or button  */}
           <IconButton
             onClick={handleDecrease}
             variant="outlined"
             color="primary"
             size="large"
+            disabled={quantity === 1}
           >
             <IndeterminateCheckBoxOutlinedIcon fontSize="large" />
           </IconButton>
